@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BLODWHITE</title>
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      background: url('background.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: Arial, sans-serif;
+      color: white;
+    }
+    /* Sekmeler */
+    .tabs {
+      display: flex;
+      background-color: rgba(0, 0, 0, 0.8);
+      padding: 10px;
+      overflow-x: auto;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+    .tab {
+      margin-right: 15px;
+      padding: 10px 20px;
+      color: white;
+      background-color: #333;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .tab:hover {
+      background-color: #555;
+    }
+    .tab.active {
+      background-color: crimson;
+    }
+    .hidden-content {
+      display: none;
+      padding: 20px;
+      margin-top: 60px;
+    }
+    /* Ana Kanal İçeriği */
+    .sled-eyes {
+      text-align: center;
+      margin-top: 100px;
+    }
+    .sled-eyes h1 {
+      font-size: 80px;
+      color: crimson;
+      text-shadow: 0 0 20px white, 0 0 30px crimson;
+      animation: glow 2s infinite alternate;
+    }
+    .sled-eyes p {
+      font-size: 20px;
+      color: white;
+    }
+    @keyframes glow {
+      0% { text-shadow: 0 0 20px crimson, 0 0 30px white; }
+      100% { text-shadow: 0 0 30px yellow, 0 0 40px orange; }
+    }
+    /* Kendi Web Siteni Yapma Bölümü */
+    .yakinda-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+    }
+    .step {
+      margin: 10px 0;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+    }
+    .step p {
+      margin: 0;
+      font-size: 16px;
+    }
+    .important {
+      color: yellow;
+      font-weight: bold;
+    }
+    .note {
+      margin-top: 10px;
+      color: #ccc;
+      font-size: 14px;
+      font-style: italic;
+    }
+
+    /* Python Temelleri Bölümü */
+    .python-section {
+      background-color: rgba(0, 0, 0, 0.7);
+      padding: 20px;
+      border-radius: 10px;
+      margin-top: 20px;
+    }
+    .python-step {
+      margin: 10px 0;
+      padding: 15px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      border-radius: 5px;
+    }
+    .python-step code {
+      display: block;
+      background-color: rgba(255, 255, 255, 0.1);
+      padding: 10px;
+      border-radius: 5px;
+      color: lightblue;
+      font-family: 'Courier New', monospace;
+    }
+    .python-step p {
+      margin: 0;
+      font-size: 16px;
+    }
+  </style>
+  <script>
+    function setActiveTab(tab) {
+      // Sekme aktif yapma
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+      
+      // İçerik gösterme
+      document.querySelectorAll('.hidden-content').forEach(c => c.style.display = 'none');
+      const target = document.getElementById(tab.getAttribute('data-target'));
+      if (target) target.style.display = 'block';
+    }
+  </script>
+</head>
+<body>
+  <!-- Sekmeler -->
+  <div class="tabs">
+    <div class="tab active" data-target="ana-kanal" onclick="setActiveTab(this)">Ana Kanal</div>
+    <div class="tab" data-target="kendi-web-siteni-yapma" onclick="setActiveTab(this)">Kendi Web Siteni Yapma</div>
+    <div class="tab" data-target="python-temelleri" onclick="setActiveTab(this)">Python Temelleri</div>
+    <div class="tab" data-target="destek" onclick="setActiveTab(this)">Destek</div>
+  </div>
+
+  <!-- İçerik -->
+  <div class="hidden-content sled-eyes" id="ana-kanal" style="display: block;">
+    <h1>SledEyes</h1>
+    <p>Telegram Kanalı: <a href="https://t.me/sledeyes" target="_blank">https://t.me/sledeyes</a></p>
+    <p>Discord Sunucumuz: <a href="https://discord.gg/76b6hYbr" target="_blank">https://discord.gg/76b6hYbr</a></p>
+  </div>
+
+  <!-- Kendi Web Siteni Yapma -->
+  <div class="hidden-content yakinda-section" id="kendi-web-siteni-yapma">
+    <h2>Kendi Web Sitenizi Yapın!</h2>
+    <div class="step">
+      <p><span class="important">1. Adım:</span> <br> PC'den site kurmanız daha iyi olur çünkü kodlama için PC gerekir. (Ben de PC'den yapıyorum.)</p>
+    </div>
+    <div class="step">
+      <p><span class="important">2. Adım:</span> <br> Siteyi oluşturmak için <a href="https://github.com" target="_blank">GitHub Pages</a> kullanacağız. İlk olarak bir GitHub hesabı açın.</p>
+      <p class="note">GitHub Pages, sitenizi barındırmak için ücretsizdir.</p>
+    </div>
+    <div class="step">
+      <p><span class="important">3. Adım:</span> <br> Yeni bir repository oluşturun ve aşağıdaki kodları bir dosyaya kaydedin:</p>
+      <code>
+        &lt;!DOCTYPE html&gt;<br>
+        &lt;html lang="en"&gt;<br>
+        &lt;head&gt;<br>
+        &nbsp;&nbsp;&lt;meta charset="UTF-8"&gt;<br>
+        &nbsp;&nbsp;&lt;title&gt;My GitHub Page&lt;/title&gt;<br>
+        &lt;/head&gt;<br>
+        &lt;body&gt;<br>
+        &nbsp;&nbsp;&lt;h1&gt;Merhaba, Benim Sitem!&lt;/h1&gt;<br>
+        &lt;/body&gt;<br>
+        &lt;/html&gt;
+      </code>
+    </div>
+    <div class="step">
+      <p><span class="important">4. Adım:</span> <br> Dosyayı "index.html" olarak kaydedin ve GitHub'daki repository'ye yükleyin. "Settings" sekmesinden Pages kısmını etkinleştirin.</p>
+    </div>
+    <p class="note">Bu, temel bir site oluşturur. Daha gelişmiş bir site için daha fazla kod yazmalısınız!</p>
+    <p><strong>İmza: BLODWHITE</strong></p>
+  </div>
+
+  <!-- Python Temelleri -->
+  <div class="hidden-content python-section" id="python-temelleri">
+    <h2>Python'un Temelleri</h2>
+    <div class="python-step">
+      <p><span class="important">1. Adım: Değişkenler ve Veri Tipleri</span><br> Python'da değişkenler, değerleri saklamak için kullanılır. Veri tipleri ise değişkenlerin alabileceği değer türlerini belirtir. Örnek:</p>
+      <code>
+        x = 5<br>
+        y = "Merhaba"<br>
+        print(x)<br>
+        print(y)
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">2. Adım: Fonksiyonlar</span><br> Python'da fonksiyonlar, tekrar kullanılabilir kod bloklarıdır. Örnek:</p>
+      <code>
+        def selamla():<br>
+        &nbsp;&nbsp;print("Merhaba!")<br>
+        selamla()
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">3. Adım: Koşul İfadeleri</span><br> Koşullu ifadeler, bir koşulun doğru olup olmadığını kontrol eder. Örnek:</p>
+      <code>
+        sayi = 10<br>
+        if sayi > 5:<br>
+        &nbsp;&nbsp;print("Sayı 5'ten büyük")
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">4. Adım: Döngüler</span><br> Döngüler, belirli bir kodu birden fazla kez çalıştırmak için kullanılır. Örnek:</p>
+      <code>
+        for i in range(5):<br>
+        &nbsp;&nbsp;print(i)
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">5. Adım: Listeler</span><br> Listeler, sıralı veri koleksiyonlarıdır. Örnek:</p>
+      <code>
+        meyveler = ["elma", "armut", "muz"]<br>
+        print(meyveler[0])  <!-- "elma" -->
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">6. Adım: Sözlükler</span><br> Sözlükler, anahtar-değer çiftleriyle veri depolar. Örnek:</p>
+      <code>
+        kisi = {"isim": "Ahmet", "yas": 25}<br>
+        print(kisi["isim"])  <!-- "Ahmet" -->
+      </code>
+    </div>
+
+    <div class="python-step">
+      <p><span class="important">7. Adım: Hata Yakalama (try-except)</span><br> Hata yakalama, programın hatalarla karşılaştığında çökmesini engeller. Örnek:</p>
+      <code>
+        try:<br>
+        &nbsp;&nbsp;sonuc = 10 / 0<br>
+        except ZeroDivisionError:<br>
+        &nbsp;&nbsp;print("Sıfıra bölme hatası!")
+      </code>
+    </div>
+  </div>
+
+  <!-- Destek -->
+  <div class="hidden-content" id="destek">
+    <h2>Destek</h2>
+    <p>Discord: <a href="https://discord.com" target="_blank">blodwhite_16389</a></p>
+    <p>Telegram: <a href="https://telegram.org" target="_blank">@Blodwhite</a></p>
+  </div>
+</body>
+</html>
